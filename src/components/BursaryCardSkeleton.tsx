@@ -1,6 +1,6 @@
 export function BursaryCardSkeleton() {
   return (
-    <li className="flex h-[280px] animate-pulse flex-col rounded-xl border border-greige-300 bg-nude-50 p-5">
+    <li className="flex h-[320px] animate-pulse flex-col rounded-xl border border-greige-300 bg-nude-50 p-5">
       <div className="mb-3 flex items-start justify-between gap-3">
         <div className="h-5 w-16 rounded-full bg-greige-200" />
         <div className="h-8 w-16 rounded-md bg-greige-200" />

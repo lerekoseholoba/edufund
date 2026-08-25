@@ -22,7 +22,7 @@ export function BursaryCard({ bursary }: BursaryCardProps) {
   };
 
   return (
-    <li className="group relative flex h-[280px] flex-col rounded-xl border border-greige-300 bg-nude-50 p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md">
+    <li className="group relative flex h-[320px] flex-col rounded-xl border border-greige-300 bg-nude-50 p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md">
       <div className="mb-3 flex items-start justify-between gap-3">
         <StatusBadge closingDate={bursary.closingDate} />
         <ShortlistButton bursaryId={bursary.id} />
