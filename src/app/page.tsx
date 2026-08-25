@@ -7,6 +7,7 @@ import { SearchInput } from '../components/SearchInput';
 import { FilterSidebar } from '../components/FilterSidebar';
 import { BursaryCard } from '../components/BursaryCard';
 import { BursaryCardSkeleton } from '../components/BursaryCardSkeleton';
+import { HomePageSkeleton } from '../components/HomePageSkeleton';
 import { Hero } from '../components/Hero';
 import {
   Bursary,
@@ -130,7 +131,7 @@ export function HomeContent() {
 
 export default function Home() {
   return (
-    <Suspense fallback={<div className="px-6 py-10 text-center">Loading...</div>}>
+    <Suspense fallback={<HomePageSkeleton />}>
       <HomeContent />
     </Suspense>
   );
