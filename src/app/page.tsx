@@ -6,6 +6,7 @@ import { useBursaries } from '../hooks/useBursaries';
 import { SearchInput } from '../components/SearchInput';
 import { FilterSidebar } from '../components/FilterSidebar';
 import { BursaryCard } from '../components/BursaryCard';
+import { BursaryCardSkeleton } from '../components/BursaryCardSkeleton';
 import { Hero } from '../components/Hero';
 import {
   Bursary,
@@ -34,7 +35,8 @@ export function HomeContent() {
     page: filters.page,
   };
 
-  const { data, isLoading, isFetching, isError } = useBursaries(apiFilters);
+  const { data, isLoading, isFetching, isError, refetch } =
+    useBursaries(apiFilters);
 
   return (
     <>
@@ -68,12 +70,20 @@ export function HomeContent() {
             </p>
 
             {isError && (
-              <p className="text-red-600">
-                Something went wrong loading bursaries.
-              </p>
+              <div className="mb-6 rounded-xl border border-red-200 bg-red-50 p-6 text-center">
+                <p className="text-red-700">
+                  Something went wrong loading bursaries.
+                </p>
+                <button
+                  onClick={() => refetch()}
+                  className="mt-3 rounded-full border border-red-300 px-4 py-1.5 text-sm font-medium text-red-700 hover:bg-red-100"
+                >
+                  Try again
+                </button>
+              </div>
             )}
 
-            {!isLoading && data?.results.length === 0 && (
+            {!isLoading && !isError && data?.results.length === 0 && (
               <div className="rounded-xl border border-dashed border-greige-300 bg-nude-50 p-10 text-center text-ink-500">
                 No bursaries match your current filters. Try widening your
                 search or clearing a filter.
@@ -81,9 +91,13 @@ export function HomeContent() {
             )}
 
             <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {data?.results.map((b) => (
-                <BursaryCard key={b.id} bursary={b} />
-              ))}
+              {isLoading
+                ? Array.from({ length: 6 }).map((_, i) => (
+                    <BursaryCardSkeleton key={i} />
+                  ))
+                : data?.results.map((b) => (
+                    <BursaryCard key={b.id} bursary={b} />
+                  ))}
             </ul>
 
             {data && data.totalPages > 1 && (
