@@ -4,7 +4,7 @@ A bursary and scholarship discovery portal for South African students. Search, f
 
 ## Live Application
 
-**[https://edufund-drab.vercel.app/]** *(replace with your actual Vercel production URL)*
+**[https://edufund-drab.vercel.app/]** 
 
 No login or setup required; the app is fully usable immediately. Search and filters are bookmarkable (they live in the URL), and saved bursaries persist in your browser across sessions.
 
